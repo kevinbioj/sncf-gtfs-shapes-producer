@@ -24,5 +24,5 @@ export async function writeResource(
       console.error("Failed to generate shapes for this resource:", e)
     );
   }
-  await $(`zip -jr "${outputFile}" ${tmpdir}/*.txt`);
+  await $(`zip -jr ${outputFile} ${tmpdir}/*.txt`);
 }
