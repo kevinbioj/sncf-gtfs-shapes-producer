@@ -12,7 +12,7 @@ export async function writeResource(
     const content = values.map((v) => header.map((h) => v[h] ?? "").join(","));
     await Bun.write(
       Bun.file(join(tmpdir, filename)),
-      [headerLine, ...content].join("\r\n")
+      `${[headerLine, ...content].join("\r\n")}\r\n`
     );
   }
   if (typeof process.env.OSM_PATH === "undefined") {
@@ -24,5 +24,5 @@ export async function writeResource(
       console.error("Failed to generate shapes for this resource:", e)
     );
   }
-  await $(`cd "${tmpdir}" && zip -D "${outputFile}" *.txt`);
+  await $(`zip -jr "${outputFile}" ${tmpdir}/*.txt`);
 }
