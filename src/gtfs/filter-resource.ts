@@ -20,10 +20,13 @@ export function filterResource(
   const stopTimes = resource
     .get("stop_times.txt")!
     .filter((st) => tripIds.includes(st.trip_id));
-  const stopIds = stopTimes.map((st) => [st.stop_id, st.parent_station]).flat();
+  const stopIds = stopTimes.map((st) => st.stop_id);
   const stops = resource
     .get("stops.txt")!
     .filter((s) => stopIds.includes(s.stop_id));
+  stops.forEach((stop) => {
+    delete stop.parent_station;
+  });
   resource.clear();
   resource.set("agency.txt", agency);
   resource.set("calendar_dates.txt", calendarDates);
