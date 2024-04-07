@@ -15,8 +15,10 @@ export async function writeResource(
       `${[headerLine, ...content].join("\r\n")}\r\n`
     );
   }
-  await $(`pfaedle -D --inplace -x "/home/kevin/nomad.osm" "${tmpdir}"`).catch(
-    (e) => console.error("Failed to generate shapes for this resource:", e)
+  await $(
+    `/usr/local/bin/pfaedle -D --inplace -x "/home/kevin/nomad.osm" "${tmpdir}"`
+  ).catch((e) =>
+    console.error("Failed to generate shapes for this resource:", e)
   );
   await $(`zip -jr ${outputFile} ${tmpdir}/*.txt`);
 }
