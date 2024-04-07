@@ -15,14 +15,8 @@ export async function writeResource(
       `${[headerLine, ...content].join("\r\n")}\r\n`
     );
   }
-  if (typeof process.env.OSM_PATH === "undefined") {
-    console.warn("No OSM path was supplied, skipping shapes generation.");
-  } else {
-    await $(
-      `pfaedle -D --inplace -x "${process.env.OSM_PATH}" "${tmpdir}"`
-    ).catch((e) =>
-      console.error("Failed to generate shapes for this resource:", e)
-    );
-  }
+  await $(`pfaedle -D --inplace -x "/home/kevin/nomad.osm" "${tmpdir}"`).catch(
+    (e) => console.error("Failed to generate shapes for this resource:", e)
+  );
   await $(`zip -jr ${outputFile} ${tmpdir}/*.txt`);
 }
