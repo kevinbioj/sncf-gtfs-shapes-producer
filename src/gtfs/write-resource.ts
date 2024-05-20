@@ -16,7 +16,7 @@ export async function writeResource(
     );
   }
   await $(
-    `/usr/local/bin/pfaedle -D --inplace -x "/home/kevin/nomad.osm" "${tmpdir}"`
+    `/usr/local/bin/pfaedle -D --inplace -x "/home/bustracker/osm-resources/normandie.osm" "${tmpdir}"`
   ).catch((e) =>
     console.error("Failed to generate shapes for this resource:", e)
   );
