@@ -15,8 +15,8 @@ const outputDirectory = process.env.OUTPUT_DIRECTORY ?? '.';
 
 const runs = [
   { sourceUrl: 'https://eu.ftp.opendatasoft.com/sncf/gtfs/export-ter-gtfs-last.zip', destinationFile: 'sncf-ter.zip' },
-  { sourceUrl: 'https://eu.ftp.opendatasoft.com/sncf/gtfs/export_gtfs_voyages.zip', destinationFile: 'sncf-intercites.zip' },
-  { sourceUrl: 'https://eu.ftp.opendatasoft.com/sncf/gtfs/export-intercites-gtfs-last.zip', destinationFile: 'sncf-tgv.zip' },
+  { sourceUrl: 'https://eu.ftp.opendatasoft.com/sncf/gtfs/export-intercites-gtfs-last.zip', destinationFile: 'sncf-intercites.zip' },
+  { sourceUrl: 'https://eu.ftp.opendatasoft.com/sncf/gtfs/export_gtfs_voyages.zip', destinationFile: 'sncf-tgv.zip' },
 ] as const;
 
 for (const { sourceUrl, destinationFile } of runs) {
